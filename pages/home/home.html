@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" formControlName="name" (focus)="formGroup.get('name').markAsTouched()"></ion-input>
+    </ion-item>
+    <p *ngIf="name.errors?.required && name.touched" class='text-danger'>Name field is required</p>
+    <p *ngIf="name.errors?.minlength" class='text-danger'>Name must be at least 2 characters</p>
+    <p *ngIf="name.errors?.maxlength" class='text-danger'>Name must be less than 30 characters</p>
+</form>
+</ion-content>
